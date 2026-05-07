@@ -3,6 +3,8 @@ package com.isc.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.isc.service.IscService;
+import com.isc.service.UserService;
+import com.isc.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +21,26 @@ public class VideoController {
 
     @Autowired
     private IscService iscService;
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/cameras")
     public Map<String, Object> getCameras(
             @RequestParam(defaultValue = "1") int pageNo,
-            @RequestParam(defaultValue = "100") int pageSize) {
-        logger.info("获取监控点列表: pageNo={}, pageSize={}", pageNo, pageSize);
+            @RequestParam(defaultValue = "100") int pageSize,
+            @RequestParam(required = false) String username) {
+        logger.info("获取监控点列表: pageNo={}, pageSize={}, username={}", pageNo, pageSize, username);
         try {
             Map<String, Object> result = iscService.getCameraList(pageNo, pageSize);
             result.put("success", "0".equals(result.get("code")));
+            
+            // 如果指定了用户名，过滤出该用户有权限的摄像机
+            if (username != null && !username.isEmpty()) {
+                Map<String, Object> userCameras = userService.getUserCamerasByUsername(username);
+                result.put("userCameras", userCameras.get("list"));
+                result.put("filtered", true);
+            }
+            
             return result;
         } catch (Exception e) {
             logger.error("获取监控点列表失败", e);
