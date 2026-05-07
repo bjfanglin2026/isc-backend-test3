@@ -1,0 +1,14 @@
+com/isc/service/UserService.class
+com/isc/config/ArtemisInitializer.class
+com/isc/controller/PageController.class
+com/isc/controller/VideoController.class
+com/isc/config/CorsConfig.class
+com/isc/IscBackendApplication.class
+com/isc/controller/UserController.class
+com/isc/repository/UserCameraRepository.class
+com/isc/controller/TestController.class
+com/isc/entity/User.class
+com/isc/entity/UserCamera.class
+com/isc/config/IscProperties.class
+com/isc/service/IscService.class
+com/isc/repository/UserRepository.class

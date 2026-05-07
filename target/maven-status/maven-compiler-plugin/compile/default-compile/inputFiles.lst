@@ -1,0 +1,14 @@
+/home/bjzatx/isc-backend/src/main/java/com/isc/controller/UserController.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/config/ArtemisInitializer.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/service/IscService.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/service/UserService.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/controller/VideoController.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/controller/TestController.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/entity/UserCamera.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/entity/User.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/repository/UserCameraRepository.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/IscBackendApplication.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/controller/PageController.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/config/IscProperties.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/config/CorsConfig.java
+/home/bjzatx/isc-backend/src/main/java/com/isc/repository/UserRepository.java
