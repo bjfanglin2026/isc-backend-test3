@@ -209,4 +209,16 @@ public class UserService {
         r.put("user", userData);
         return r;
     }
+
+    public Map<String, Object> getUserCamerasByUsername(String username) {
+        Optional<User> opt = userRepository.findByUsername(username);
+        if (opt.isEmpty()) {
+            Map<String, Object> r = new HashMap<>();
+            r.put("success", false);
+            r.put("cameras", List.of());
+            return r;
+        }
+        return getUserCameras(opt.get().getId());
+    }
+
 }
