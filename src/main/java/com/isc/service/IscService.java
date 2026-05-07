@@ -261,4 +261,27 @@ public class IscService {
     /**
      * 发送DELETE请求
      */
+
+    public Map<String, Object> ptzControl(String cameraIndexCode, Integer action, String command, Integer speed, Integer presetIndex) {
+        String api = ARTEMIS_PATH + "/api/video/v1/ptzs/controlling";
+        JSONObject body = new JSONObject();
+        body.put("cameraIndexCode", cameraIndexCode);
+        body.put("action", action);
+        body.put("command", command);
+        body.put("speed", speed);
+        body.put("presetIndex", presetIndex);
+        logger.info("PTZ request: {}", body.toJSONString());
+        String result = doPost(api, body.toJSONString());
+        logger.info("PTZ response: {}", result);
+        JSONObject json = JSON.parseObject(result);
+        Map<String, Object> response = new HashMap<>();
+        if ("0".equals(json.getString("code"))) {
+            response.put("success", true);
+            response.put("msg", "OK");
+        } else {
+            response.put("success", false);
+            response.put("msg", json.getString("msg"));
+        }
+        return response;
+    }
 }
